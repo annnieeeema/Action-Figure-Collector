@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block content %}
+
+<h1>Action Figures</h1>
+
+{% for actionfigure in actionfigures %}
+<div class="card">
+    <a href="{% url 'detail' actionfigure.id %}">
+    <div class="card-content">
+        <span class="card-title">{{ actionfigure.name }}</span>
+        <p>Name: {{actionfigure.name }}</p>
+        <p>Origin Movie: {{ actionfigure.originmovie }}</p>
+        <p>Ability: {{ actionfigure.ability }}</p>
+        <p>Price: {{ actionfigure.price }}</p>
+    </div>
+    </a>
+</div>
+{% endfor %}{% endblock %}
