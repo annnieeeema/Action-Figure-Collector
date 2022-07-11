@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block content %}
+<h1>Delete Superpower</h1>
+
+<h4>
+    Are you sure you want to Delete
+    <span class="red-text">{{ object.name }}</span>?
+</h4>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes - Delete!" class="btn teal lighten-2" />
+    <a href="{% url 'detail' object.id %}">Cancel</a>
+</form>
+
+{% endblock %}
