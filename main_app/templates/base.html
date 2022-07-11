@@ -12,6 +12,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
     <header class="navbar-fixed">
@@ -19,12 +20,14 @@
         <div class="nav-wrapper red darken-4">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">Action Figure Collector</a>
+              <a href="/" class="left brand-logo">Superhero Collector</a>
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-            <li><a href="/actionfigures">View all Collected Figures</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="/superpowers">View all Superpowers</a></li>
+            <li><a href="{% url 'actionfigures_create' %}">Create a new Figure</a></li>
+            <li><a href="{% url 'index' %}">View all Collected Figures</a></li>
           </ul>
         </div>
       </nav>

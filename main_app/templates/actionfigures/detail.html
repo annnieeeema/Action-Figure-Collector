@@ -1,14 +1,45 @@
 {% extends 'base.html' %}{% block content %}
 
-<h1>Action Figures</h1>
+<h1>Superhero</h1>
 
-<div class="card">
-    <div class="card-content">
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
         <span class="card-title">{{ actionfigure.name }}</span>
         <p>Name: {{actionfigure.name }}</p>
         <p>Origin Movie: {{ actionfigure.originmovie }}</p>
         <p>Ability: {{ actionfigure.ability }}</p>
         <p>Price: {{ actionfigure.price }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'actionfigures_update' actionfigure.id %}">Edit</a>
+        <a href="{% url 'actionfigures_delete' actionfigure.id %}">Delete</a>
+      </div>
     </div>
+  </div>
+  <div class="col s6">
+    <form action="{% url 'add_movie' actionfigure.id %}" method="post">
+        {% csrf_token %}{{ movie_form.as_p }}
+        <input type="submit" class="btn" value="Add Movie" />
+    </form>
+    <table class="striped">
+      <thread>
+        <tr>
+          <th>Move Title</th>
+          <th>Year</th>
+        </tr>
+      </thread>
+      <tbody>
+        {% for movie in actionfigure.movie_set.all %}
+        <tr>
+          <td>{{movie.title}}</td>
+          <td>{{movie.year}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
+
 {% endblock %}
